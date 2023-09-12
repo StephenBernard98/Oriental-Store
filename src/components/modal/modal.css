@@ -1,0 +1,48 @@
+/* Modal overlay styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* Adjust z-index as needed */
+}
+
+/* Modal container styles */
+.modal-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(-100%);
+    transition: transform 0.5s, opacity 0.5s;
+    opacity: 0;
+}
+
+/* Modal enter animation */
+.modal-enter {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.modal-enter-active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Modal exit animation */
+.modal-exit {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.modal-exit-active {
+    transform: translateY(-100%);
+    opacity: 0;
+}

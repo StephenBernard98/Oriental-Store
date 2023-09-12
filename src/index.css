@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@layer base {
+  button {
+    @apply border-black rounded-xl px-5 py-1
+  }
+}
+
+@layer base {
+  img {
+    @apply cursor-pointer
+  }
+}
