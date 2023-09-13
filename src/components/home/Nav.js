@@ -55,7 +55,7 @@ const Nav = () => {
     <div className="max-w-[1250px] mx-auto top_nav">
       <div
         className="flex justify-between max-w-[1250px] mx-auto items-center p-4 z-10 transition-all duration-500 cursor-pointer
-       bg-yellow-500 fixed w-full top-0"
+       bg-yellow-500 fixed w-full top-0 rounded-br-xl rounded-bl-xl"
       >
         <div className="flex items-center">
           <div onClick={() => setNav(!nav)} className="cursor-pointer">
@@ -146,9 +146,6 @@ const Nav = () => {
                 </span>
               </li>
             )}
-            <li className="text-xl  hover:bg-yellow-600 hover:text-white/80 duration-500 cursor-pointer py-4 flex items-center">
-              <TbTruckDelivery size={25} className="ml-4 mr-3 " /> Orders
-            </li>
             <Link to="/">
               <li
                 onClick={handleClick}

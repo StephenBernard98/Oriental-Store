@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../home/Layout";
-import Protect from "../routes/protected_routes/Protect"
+import Protect from "../routes/protected_routes/Protect";
 import { BsChevronCompactUp, BsChevronCompactDown } from "react-icons/bs";
 import {
   removeItemFromCart,
@@ -38,6 +38,11 @@ const Cart = () => {
     setCheckedOut(false);
     setRefreshCart(true);
     dispatch(removeAllItemsFromCart());
+  };
+
+  const checkout = () => {
+    setCheckedOut(true);
+     localStorage.setItem("checkout", true);
   };
 
   return (
@@ -79,7 +84,7 @@ const Cart = () => {
               </h2>
             )}
             {cartItems.map((item) => (
-              <div className="flex  items-center my-10 lg:my-16 md:mx-5">
+              <div className="flex items-center my-10 lg:my-16 md:mx-5">
                 <div className="mr-4 md:mr-6 lg:mr-10">
                   <img
                     src={item.image}
@@ -178,10 +183,10 @@ const Cart = () => {
                   <Protect>
                     {" "}
                     <button
-                      onClick={() => setCheckedOut(true)}
+                      onClick={checkout}
                       className="bg-black text-yellow-500 mr-3 font-semibold md:text-lg lg:text-xl px-4 py-2 my-3 rounded"
                     >
-                     Order Now{" "}
+                      Order Now{" "}
                     </button>
                   </Protect>
                   <button
