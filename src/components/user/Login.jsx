@@ -37,6 +37,8 @@ const Login = () => {
     });
     if (bioData) {
       auth.logIn(bioData);
+       localStorage.setItem("isLoggedIn", true);
+       localStorage.setItem("username", bioData.username);
       navigate("/");
     } else {
       setOpenModal(true);

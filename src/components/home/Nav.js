@@ -6,13 +6,16 @@ import { MdFavorite, MdHelp, MdShoppingBasket } from "react-icons/md";
 import { BiLogOut, BiUserPlus } from "react-icons/bi";
 import { useAuth } from "../context/Context";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeAllItemsFromCart } from "../redux/features/cart/basketSlice";
+
 const Nav = () => {
   const [nav, setNav] = useState(false);
   const [show, handleShow] = useState(false);
   const auth = useAuth();
   const cartItems = useSelector((state) => state.basket.cart);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -28,6 +31,7 @@ const Nav = () => {
   const logout = () => {
     auth.logOut();
     setNav(false);
+    dispatch(removeAllItemsFromCart());
   };
 
   const handleClick = () => {
@@ -50,8 +54,8 @@ const Nav = () => {
   return (
     <div className="max-w-[1250px] mx-auto top_nav">
       <div
-        className="flex justify-between max-w-[1250px] mx-auto items-center p-4 z-10 transition-all duration-500 cursor-pointer 
-       bg-yellow-500 fixed w-full top-0 "
+        className="flex justify-between max-w-[1250px] mx-auto items-center p-4 z-10 transition-all duration-500 cursor-pointer
+       bg-yellow-500 fixed w-full top-0"
       >
         <div className="flex items-center">
           <div onClick={() => setNav(!nav)} className="cursor-pointer">
@@ -63,7 +67,7 @@ const Nav = () => {
             </h1>
           </Link>
         </div>
-        <div className="bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]">
+        {/* <div className="bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]">
           <input
             className="bg-transparent p-2 hidden md:flex focus:outline-none w-full"
             type="search"
@@ -73,27 +77,31 @@ const Nav = () => {
             size={25}
             className="cursor-pointer hidden lg:flex"
           />
-        </div>
-        <Link to="/cart">
-          <div className="flex flex-row items-center mr-3">
-            <MdShoppingBasket size={32} className="mr-1" />
-            <span className="text-2xl font-bold">{cartItems.length}</span>
-          </div>
-        </Link>
-
-        {!auth.user ? (
-          <Link to="/login">
-            <BiUserPlus size={45} />
+        </div> */}
+        <div className="flex justify-between items-center">
+          <Link to="/cart">
+            <div className="flex flex-row items-center mr-3">
+              <MdShoppingBasket size={32} className="mr-1" />
+              <span className="text-2xl font-bold">{cartItems.length}</span>
+            </div>
           </Link>
-        ) : (
-          <span className="bg-yellow-500">
-            <img
-              className="rounded-full mr-2 p-1 w-80 h-16 sm:w-12 sm:h-12 md:w-66 md:h-16 lg:W-16 lg:w-16 bg-yellow-500 "
-              src={auth.userImage}
-              alt=""
-            />
-          </span>
-        )}
+
+          {!auth.user ? (
+            <Link to="/login">
+              <BiUserPlus size={45} />
+            </Link>
+          ) : (
+            <span className="bg-yellow-500">
+              <img
+                className={`rounded-full mr-2 p-1 w-12 h-12 sm:w-12 sm:h-12 lg:w-16 lg:h-16 bg-yellow-500 ${
+                  auth.user ? "lg:flex" : "lg:hidden"
+                }`}
+                src={auth.userImage}
+                alt=""
+              />
+            </span>
+          )}
+        </div>
       </div>
 
       {/*Starting  Mobile Menu */}
@@ -152,13 +160,10 @@ const Nav = () => {
             <li className="text-xl  hover:bg-yellow-600 hover:text-white/80 duration-500 cursor-pointer py-4 flex items-center">
               <TbTruckDelivery size={25} className="ml-4 mr-3 " /> Orders
             </li>
-            <li className="text-xl cursor-pointer py-4 flex items-center  hover:bg-yellow-600 hover:text-white/80 duration-500">
-              <MdFavorite size={25} className="ml-4 mr-3 " /> Favourites
-            </li>
             <Link to="/">
               <li
                 onClick={handleClick}
-                className="text-xl cursor-pointer py-4 flex items-center  hover:bg-yellow-600 hover:text-white/80 duration-500"
+                className="text-xl cursor-pointer py-4 flex items-center hover:bg-yellow-600 hover:text-white/80 duration-500"
               >
                 <MdHelp size={25} className="ml-4 mr-3 " /> Help
               </li>

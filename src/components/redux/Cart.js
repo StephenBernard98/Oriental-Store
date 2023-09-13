@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../home/Layout";
+import Protect from "../routes/protected_routes/Protect"
 import { BsChevronCompactUp, BsChevronCompactDown } from "react-icons/bs";
 import {
   removeItemFromCart,
@@ -174,12 +175,15 @@ const Cart = () => {
                   </p>
                 </div>
                 <div className="flex justify-end">
-                  <button
-                    onClick={() => setCheckedOut(true)}
-                    className="bg-black text-yellow-500 mr-3 font-semibold md:text-lg lg:text-xl px-4 py-2 my-3 rounded"
-                  >
-                    Proceed to checkout{" "}
-                  </button>
+                  <Protect>
+                    {" "}
+                    <button
+                      onClick={() => setCheckedOut(true)}
+                      className="bg-black text-yellow-500 mr-3 font-semibold md:text-lg lg:text-xl px-4 py-2 my-3 rounded"
+                    >
+                     Order Now{" "}
+                    </button>
+                  </Protect>
                   <button
                     onClick={() => setOpenModal(false)}
                     className="bg-black text-yellow-500 font-semibold md:text-lg lg:text-xl px-4 py-2 my-3 rounded"
@@ -200,8 +204,8 @@ const Cart = () => {
                   <p className="text-lg md:text-xl font-semibold text-center">
                     {cartItems.length === 1 ? (
                       <p>
-                        You would be contacted as soon as your item is ready
-                        for delivery
+                        You would be contacted as soon as your item is ready for
+                        delivery
                       </p>
                     ) : (
                       <p>

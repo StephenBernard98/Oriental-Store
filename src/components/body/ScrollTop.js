@@ -33,7 +33,7 @@ const ScrollTop = () => {
     <div>
       {scrolled && (
         <span
-          className={`bg-black text-3xl md:text-5xl lg:text-4xl text-yellow-500 font-bold rounded-full px-5 py-4 md:px-7 md:py-4 lg:px-5 lg:py-2 fixed bottom-5 right-4 cursor-pointer`}
+          className={`bg-black text-3xl md:text-5xl lg:text-4xl text-yellow-500 font-bold rounded-full px-7 py-4 md:px-7 md:py-4 lg:px-5 lg:py-2 fixed bottom-5 right-4 cursor-pointer`}
           onClick={handleClickFired}
         >
           &#8593;

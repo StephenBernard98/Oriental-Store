@@ -10,11 +10,22 @@ import { dish } from "../../api/food";
 import ScrollTop from "../body/ScrollTop";
 
 const Homepage = () => {
+  const [user, setUser] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [topRated, setTopRated] = useState(rated);
   const [topClothes, setTopClothes] = useState(topCloth);
   const [dishes, setDishes] = useState(dish);
   const auth = useAuth();
-  
+
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("isLoggedIn");
+    if (loggedIn === 'true') {
+      const userData = localStorage.getItem("username");
+      setUser(userData);
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -35,7 +46,7 @@ const Homepage = () => {
       <Layout>
         <div
           className={`max-w-[1250px] m-auto mt-[5rem] px-1 lg:px-0 overflow-x-hidden ${
-            auth.user && "mt-[6.2rem]"
+            auth.user && "mt-[4.5rem] md:mt-[5.5rem] lg:mt-[6.2rem]"
           }`}
         >
           <div className="bg-[#dcdcdc] relative py-10 px-2 lg:px-16 lg:py-2 rounded-lg lg:rounded-2xl animate-slide">
@@ -77,7 +88,7 @@ const Homepage = () => {
                     <Link to={`/${item.category}`}>
                       <img src={item.image} alt={item.name} className="w-40" />
                       <div className="mt-3">
-                        <p className="text-base font-semibold py-1 md:py-2 lg:py3 ">
+                        <p className="text-base text-center font-semibold py-1 md:py-2 lg:py3 ">
                           {item.name}
                         </p>
                         <p className="text-base text-center font-semibold ">

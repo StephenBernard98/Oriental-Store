@@ -10,8 +10,6 @@ module.exports = {
       keyframes: {
         slide: {
           "0%": { transform: "translateX(-1250px)", opacity: "0" },
-          // "25%" : {transform : "translateX(300px)"},
-          // "75%" : {transform : "translateX(300px)"},
           "100%": { transform: "translateX(0)", opacity: "1" },
         },
       },
