@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import { BsFillCartFill } from "react-icons/bs";
 import { TbTruckDelivery } from "react-icons/tb";
-import { MdFavorite, MdHelp, MdShoppingBasket } from "react-icons/md";
-import { BiLogOut, BiUserPlus } from "react-icons/bi";
+import { MdShoppingBasket } from "react-icons/md";
+import { BiLogOut, BiSolidGroup, BiUserPlus } from "react-icons/bi";
 import { useAuth } from "../context/Context";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -67,17 +67,6 @@ const Nav = () => {
             </h1>
           </Link>
         </div>
-        {/* <div className="bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]">
-          <input
-            className="bg-transparent p-2 hidden md:flex focus:outline-none w-full"
-            type="search"
-            placeholder="Search Store"
-          />
-          <AiOutlineSearch
-            size={25}
-            className="cursor-pointer hidden lg:flex"
-          />
-        </div> */}
         <div className="flex justify-between items-center">
           <Link to="/cart">
             <div className="flex flex-row items-center mr-3">
@@ -165,7 +154,7 @@ const Nav = () => {
                 onClick={handleClick}
                 className="text-xl cursor-pointer py-4 flex items-center hover:bg-yellow-600 hover:text-white/80 duration-500"
               >
-                <MdHelp size={25} className="ml-4 mr-3 " /> Help
+                <BiSolidGroup size={25} className="ml-4 mr-3 " /> About Us
               </li>
             </Link>
 
