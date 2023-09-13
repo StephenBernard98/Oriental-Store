@@ -65,4 +65,15 @@ export const userData = [
     image:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Nossa_Senhora_do_Perpetuo_Socorro_HD.jpg/220px-Nossa_Senhora_do_Perpetuo_Socorro_HD.jpg",
   },
+  {
+    id: "lmkek2i3md",
+    firstName: "Guest",
+    lastName: "Guest",
+    username: "Guest",
+    email: "guest@gmail.com",
+    balance: "0",
+    password: "1234",
+    image:
+      "https://t4.ftcdn.net/jpg/02/29/75/83/240_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg",
+  },
 ];
